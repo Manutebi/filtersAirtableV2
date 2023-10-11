@@ -1,0 +1,967 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+body,
+html {
+    /* zoom: 0.9; */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* overflow: hidden; */
+    background: rgb(236, 236, 236);
+    /* background: linear-gradient(90deg, rgba(236, 236, 236, 1) 0%, rgba(249, 249, 249, 1) 100%); */
+    font-family: Source Sans Pro, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+}
+
+.checkbox-container{
+    display: flex;
+    justify-content: start;
+    margin-left: 5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 600;
+
+}
+
+/* Agrega espacio alrededor de cada checkbox y su label */
+input[type="checkbox"] + label {
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+
+header{
+    margin-top: 10px;
+}
+
+
+.select-container{
+    display: flex;
+    justify-content: start;
+    margin-left: 5rem;
+}
+
+.select-container select{
+    border-radius: 2rem;
+    width: 10rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+
+
+.down{
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    margin: 0;
+    cursor: pointer;
+}
+
+.container-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.up{
+    transform: scale(1.2);
+    position: fixed;
+    bottom: 20px;
+    right: 28px;
+    cursor: pointer; 
+    z-index: 999;
+}
+
+.up i:hover{
+    transform: scale(1.2);
+    color: #ff9900;
+}
+
+.down i:hover {
+    color: #ff0000; 
+    transform: scale(1.2); 
+}
+
+.loguito{
+    position: absolute;
+    top: 1rem;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    margin-right: 2.5rem;
+    cursor: pointer;
+}
+
+.container-header #logoImage{
+    width: 8rem;
+    
+}
+
+.container-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.active{
+    display: flex;
+    justify-content: center;
+    margin-left: 5rem;
+    align-items: flex-end;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    width: 20rem;
+    height: 2.5rem;
+}
+
+.button-active{
+    display: flex;
+    background-color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: .4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: scale(1.1);
+    animation: pulsacion 1s infinite;
+}
+
+
+.mostrar,
+.ocultarContenido {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    background-color: transparent;
+    margin-bottom: 1rem;
+    background: rgb(207, 207, 207);
+}
+
+.ocultarContenido:hover {
+    color: #fff !important;
+    background-color: #ff7700 !important;
+}
+
+.mostrar:hover {
+    color: #fff !important;
+    background-color: #0099ff !important;
+}
+
+
+
+.logo #logoImage {
+    width: 90px;
+    height: 30px;
+    display: flex;
+}
+
+
+#fullScreen {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+
+}
+
+#fullScreen .bi bi-fullscreen {
+    color: #fff;
+
+}
+
+
+.title p {
+    display: flex;
+    justify-content: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 5rem;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* .title{
+    grid-column: 2;
+} */
+
+.nav_menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-right: 40px;
+
+}
+
+.nav_menu .logo {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+
+
+}
+
+img:hover {
+    transform: scale(1.1);
+    /* Escala la imagen al 110% en el hover */
+    animation: pulsacion 1s infinite;
+    /* Inicia la animación de pulsación */
+
+}
+
+@keyframes pulsacion {
+    0% {
+        transform: scale(1);
+
+    }
+
+    50% {
+        transform: scale(1.1);
+
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+
+/* //////////////////////////// */
+/* Estilos para el botón */
+.filter-button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos para el icono SVG */
+.svg-icon {
+    width: 100%;
+    height: 100%;
+    fill: #007BFF;
+    /* Color inicial del icono */
+    transition: fill 0.3s ease-in-out;
+    /* Transición de animación */
+}
+
+/* Cambiar el color del icono al pasar el ratón sobre el botón */
+.filter-button:hover .svg-icon {
+    fill: #FF5733;
+}
+
+/* Estilos para el pop-up */
+.popup {
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    background-color: #fff;
+    /* background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%); */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    cursor: grab;
+}
+
+svg {
+    height: 30px !important;
+}
+
+/* Estilos para el botón de cierre */
+#popup .close-button {
+    display: flex !important;
+    justify-content: end;
+    position: absolute !important;
+    top: 1px !important;
+    right: 0px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    width: 35px !important;
+}
+
+
+
+.popup p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+
+}
+
+.popup p button {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    margin-left: 30px;
+    height: 40px;
+    background-color: rgb(255, 166, 0);
+}
+
+.show-popup {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+
+}
+
+
+
+/* Estilos para popup2 */
+
+/* Estilos para el pop-up */
+.popup1 {
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 65rem;
+    left: 10px;
+    background-color: #fff;
+    /* background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%); */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#popup1 .close-button {
+    display: flex !important;
+    justify-content: end;
+    position: absolute !important;
+    top: 1px !important;
+    right: 0px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    width: 35px !important;
+}
+
+
+
+.popup1 p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+
+}
+
+.popup1 p button {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    margin-left: 30px;
+    height: 40px;
+    background-color: rgb(255, 166, 0);
+}
+
+.show-popup1 {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+
+}
+
+
+/* ///////////////////////////////////////////
+/* Estilos para popup 3 ////////////////////// */
+/* /////////////////////////////////////////// */ 
+/* Estilos para el pop-up */
+.popup2 {
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 125rem;
+    left: 10px;
+    background-color: #fff;
+    /* background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%); */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#popup2 .close-button {
+    display: flex !important;
+    justify-content: end;
+    position: absolute !important;
+    top: 1px !important;
+    right: 0px !important;
+    background: none !important;
+    border: none !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    width: 35px !important;
+}
+
+
+
+.popup2 p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+
+}
+
+.popup2 p button {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    margin-left: 30px;
+    height: 40px;
+    background-color: rgb(255, 166, 0);
+}
+
+.show-popup2 {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 999;
+
+}
+
+
+
+/* h3 {
+    font-size: 1.5em;
+    padding: 5px;
+    margin-left: 55px;
+} */
+
+.filtrar {
+    display: flex;
+}
+
+/* .logo {
+    float: right;
+    padding: 0px 60px;
+    cursor: pointer;
+    width: 100px;
+    height: auto;
+    margin-right: 200px;
+} */
+
+button {
+    margin: 2px;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 2rem;
+    padding: 5px;
+    border: solid 1px white;
+    font-weight: bold;
+}
+
+.logo:hover #mostrar {
+    transform: scale(1.1);
+    animation: pulsacion 1s infinite;
+}
+
+.logo:hover #ocultar {
+    transform: scale(1.1);
+    animation: pulsacion 1s infinite;
+}
+
+.logo:hover #mostrar1 {
+    transform: scale(1.1);
+    animation: pulsacion 1s infinite;
+}
+
+.logo:hover #ocultar1 {
+    transform: scale(1.1);
+    animation: pulsacion 1s infinite;
+}
+
+/*OJO CON ESTO DEBO ELIMINAR LA FUNCION DEL BOTON Y SU LOGICA CON DEMAS FUNCIONES */
+.botones #botonAplicar {
+    display: none;
+}
+
+button:hover:not(:disabled) {
+    background-color: rgb(255, 166, 0);
+    transition: 1s;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+/* button:hover:not(:disabled) {
+    background-color: rgb(255, 166, 0);
+    transition: 1s;
+    color: white;
+} */
+
+
+.popup button {
+    background-color: #fff;
+}
+
+.popup button:hover {
+    background-color: #FF5733;
+    border: solid 1px #fff;
+}
+
+.popup1 button {
+    background-color: #fff;
+}
+
+.popup1 button:hover {
+    background-color: #FF5733;
+    border: solid 1px #fff;
+}
+
+.popup2 button:hover {
+    background-color: #FF5733;
+    border: solid 1px #fff;
+}
+
+body {
+    margin-top: 5px;
+}
+
+.filtros {
+    display: flex;
+    margin-left: 5px;
+}
+
+#filterFieldName {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+
+#filterFieldName option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+
+#filterType {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+#filterType option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+#filterValue {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+/* ///////////////////////
+/////Second section//// 
+/////////////////////// */
+#filterFieldName1 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+
+#filterFieldName1 option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+
+#filterType1 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+#filterType1 option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+#filterValue1 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+/* ///////////////////////
+/////Second section//// 
+/////////////////////// */
+#filterFieldName2 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+
+#filterFieldName2 option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+
+#filterType2 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+#filterType2 option {
+    background-color: rgb(229, 229, 229);
+
+}
+
+#filterValue2 {
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+
+}
+
+/* ///////////////////
+////////////////////
+/////////////////// */
+
+
+.form-control-sm {
+    margin-left: 4.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 5px;
+
+}
+
+.botones {
+    margin-left: 55px;
+}
+
+.logo #logoFilter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+.logo #logoFilter1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+.logo #logoFilter2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+
+
+.wrapper {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 98%;
+    height: 780px;
+}
+
+.wrapper #myIframe {
+    width: 98%;
+    height: 100%;
+}
+
+.hidelogo {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background: #ffffff;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    display: block;
+    color: #000;
+    background: rgb(236, 236, 236);
+    /* background: linear-gradient(90deg, rgba(236, 236, 236, 1) 0%, rgba(249, 249, 249, 1) 100%); */
+}
+
+.hidelogo1 {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background: #ffffff;
+    right: 0px;
+    bottom: -37px;
+    z-index: 999;
+    display: block;
+    color: #000;
+    background: rgb(236, 236, 236);
+    /* background: linear-gradient(90deg, rgba(236, 236, 236, 1) 0%, rgba(249, 249, 249, 1) 100%); */
+}
+
+.hidelogo2 {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background: #ffffff;
+    right: 0px;
+    bottom: -21px;
+    z-index: 999;
+    display: block;
+    color: #000;
+    background: rgb(236, 236, 236);
+    /* background: linear-gradient(90deg, rgba(236, 236, 236, 1) 0%, rgba(249, 249, 249, 1) 100%); */
+}
+
+#bottomParagraph {
+
+    position: absolute;
+    color: #000;
+    bottom: -5;
+    left: 0;
+    right: 0;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-size: .9em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/*/////////////////////////////
+//////////DisplayBlock///////*/
+/*/////////////////////////*/
+/* p {
+
+    position: absolute;
+    color: #000;
+    bottom: 0;
+    left: 40%;
+    height: 5;
+    display: block;
+    z-index:1000; 
+    font-size: .9em;
+    font-family: 'Courier New', Courier, monospace;
+} */
+
+/*////////////////////////////////////////////
+/////////////////Media Queries///////////////
+//////////////////////////////////////////// */
+
+@media screen and (max-width: 1280px) {
+
+    /* .wrapper 
+    {
+        position:relative;
+        z-index: 1;
+        display: inline-block;
+        width: 100%;
+        height: 550px;
+    }
+
+    .wrapper #myIframe
+    {
+        width: 100%;
+        height: 100%;
+    } */
+
+}
+
+
+@media screen and (max-width: 720px) {
+    body {
+        font-size: 0.6rem;
+    }
+
+    .wrapper {
+        width: 2080px;
+        height: auto;
+
+    }
+
+
+    .nav_menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* justify-items: center;
+        align-items: center; */
+    }
+
+    .nav_menu .title p {
+        margin-left: 20px;
+        white-space: nowrap;
+    }
+
+    .title p {
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        font-size: .7rem;
+    }
+
+    .wrapper #myIframe {
+        width: 380px;
+        height: 600px;
+    }
+
+
+    /* h3
+    {
+        font-size: 1.2rem;
+    } */
+
+    #logoimage {
+        width: 70px;
+        height: 25px;
+    }
+
+    .botones {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 0fr 0fr;
+        place-items: center;
+        margin: 1px;
+    }
+
+    .botones .agregarFiltro,
+    .limpiarFiltro {
+        margin-left: 90px;
+
+    }
+
+    .botones .actualizar,
+    #botonMostrarFiltros {
+        margin-right: 90px;
+
+    }
+
+    .botones button {
+        width: 90px;
+    }
+
+
+    .form-control-sm {
+        display: flex;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.6rem;
+    }
+
+    /* #myiframe
+    {
+        width: 100%;
+        height: 82%;
+    } */
+
+    #filtroContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo #logoFilter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+
+
+
+
+}
+
+@media screen and (max-width: 720px) {
+
+
+    .wrapper {
+        width: 98%;
+    }
+
+    .wrapper #myIframe {
+        width: 98%;
+    }
+
+
+}
+
+@media screen and (max-width: 844px) and (orientation: landscape) {
+
+    body {
+        font-size: 0.6rem;
+
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        width: 100%;
+        height: 380px;
+    }
+
+    .wrapper #myIframe {
+        width: 98%;
+        height: 100%;
+    }
+
+    .botones button {
+        width: 90px;
+    }
+
+
+}
