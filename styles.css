@@ -457,9 +457,11 @@ svg {
 button {
     margin: 2px;
     background-color: white;
+    text-align: center;
     cursor: pointer;
-    border-radius: 5px;
-    width: 2rem;
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 5px;
     border: solid 1px white;
     font-weight: bold;
