@@ -30,85 +30,110 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const baseUrls = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
-            .map(letter => {
-                const baseUrl = urlParams.get('baseUrl' + letter);
-                const titulo = urlParams.get('titulo' + letter);
-                return { baseUrl, titulo };
-            });
+const baseUrls = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+    .map(letter => {
+        const baseUrl = urlParams.get('baseUrl' + letter);
+        const titulo = urlParams.get('titulo' + letter);
+        return { baseUrl, titulo };
+    });
 
-        const checkboxContainer = document.querySelector('.checkbox-container');
-        const containerGrid = document.querySelector('.container-grid');
+const checkboxContainer = document.querySelector('.checkbox-container');
+const containerGrid = document.querySelector('.container-grid');
 
-        baseUrls.forEach((data, index) => {
-            if (data.baseUrl) {
-                const checkbox = document.createElement('input');
-                checkbox.type = "checkbox";
-                checkbox.id = "checkbox" + (index + 1);
-                checkbox.checked = true;
-                
-                const label = document.createElement('label');
-                label.htmlFor = "checkbox" + (index + 1);
-                label.textContent = data.titulo || `iframe${index + 1}`;
-                
-                checkboxContainer.appendChild(checkbox);
-                checkboxContainer.appendChild(label);
-            }
+baseUrls.forEach((data, index) => {
+    if (data.baseUrl) {
+        const checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.id = "checkbox" + (index + 1);
+        checkbox.checked = true;
+        
+        const label = document.createElement('label');
+        label.htmlFor = "checkbox" + (index + 1);
+        label.textContent = data.titulo || `iframe${index + 1}`;
+        
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+    }
+});
+
+baseUrls.forEach((data, index) => {
+    if (data.baseUrl) {
+        const iframe = document.createElement('iframe');
+        iframe.id = "myIframe" + (index + 1);
+        iframe.src = data.baseUrl;
+        iframe.style.width = "98%";
+        iframe.style.height = "800px";
+        iframe.allowFullscreen = true;
+
+        const section = document.createElement('section');
+        section.id = "section" + (index + 1);
+
+        const header = document.createElement('header');
+        const nav = document.createElement('nav');
+        nav.className = "nav_menu";
+        
+        const divTitle = document.createElement('div');
+        divTitle.className = "title";
+        
+        const pTitle = document.createElement('p');
+        pTitle.id = "title" + (index + 1);
+        pTitle.textContent = data.titulo || `iframe${index + 1}`;
+        
+        divTitle.appendChild(pTitle);
+
+        // Crear botón de recarga
+        const reloadButton = document.createElement('button');
+        reloadButton.textContent = 'Recargar';
+        reloadButton.addEventListener('click', function() {
+            iframe.src = data.baseUrl;
         });
 
-        baseUrls.forEach((data, index) => {
-            if (data.baseUrl) {
-                const iframe = document.createElement('iframe');
-                iframe.id = "myIframe" + (index + 1);
-                iframe.src = data.baseUrl;
-                iframe.style.width = "98%";
-                iframe.style.height = "800px";
-                iframe.allowFullscreen = true;
+        // Agregar botón de recarga al lado del título
+        divTitle.appendChild(reloadButton);
 
-                const section = document.createElement('section');
-                section.id = "section" + (index + 1);
 
-                const header = document.createElement('header');
-                const nav = document.createElement('nav');
-                nav.className = "nav_menu";
-                
-                const divTitle = document.createElement('div');
-                divTitle.className = "title";
-                
-                const pTitle = document.createElement('p');
-                pTitle.id = "title" + (index + 1);
-                pTitle.textContent = data.titulo || `iframe${index + 1}`;
-                
-                divTitle.appendChild(pTitle);
-                nav.appendChild(divTitle);
-                header.appendChild(nav);
-                
-                const main = document.createElement('main');
-                
-                const divWrapper = document.createElement('div');
-                divWrapper.className = "wrapper";
-                
-                const pBottomParagraph = document.createElement('p');
-                pBottomParagraph.id = "bottomParagraph" + (index + 1);
-                
-                divWrapper.appendChild(pBottomParagraph);
-                
-                const divHideLogo1 = document.createElement('div');
-                divHideLogo1.className = "hidelogo1";
-                
-                divWrapper.appendChild(divHideLogo1);
-                
-                divWrapper.appendChild(iframe);
-                
-                main.appendChild(divWrapper);
-                
-                section.appendChild(header);
-                section.appendChild(main);
 
-                containerGrid.appendChild(section);
-                
-            }
+        // Crear el icono y asignarle una clase de Font Awesome
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid fa-rotate-right fa-fade'; // Esta clase es para el icono de recarga
+
+        // Agregar el icono al botón
+        reloadButton.appendChild(icon);
+
+        reloadButton.addEventListener('click', function() {
+            iframe.src = data.baseUrl;
         });
+
+        
+        nav.appendChild(divTitle);
+        header.appendChild(nav);
+        
+        const main = document.createElement('main');
+        
+        const divWrapper = document.createElement('div');
+        divWrapper.className = "wrapper";
+        
+        const pBottomParagraph = document.createElement('p');
+        pBottomParagraph.id = "bottomParagraph" + (index + 1);
+        
+        divWrapper.appendChild(pBottomParagraph);
+        
+        const divHideLogo1 = document.createElement('div');
+        divHideLogo1.className = "hidelogo1";
+        
+        divWrapper.appendChild(divHideLogo1);
+        
+        divWrapper.appendChild(iframe);
+        
+        main.appendChild(divWrapper);
+        
+        section.appendChild(header);
+        section.appendChild(main);
+
+        containerGrid.appendChild(section); 
+    }
+});
+
 
         checkboxContainer.addEventListener('change', function() {
         const checkboxes = Array.from(checkboxContainer.querySelectorAll('input'));
@@ -116,11 +141,6 @@
         checkboxes.forEach((checkbox, index) => {
             const section = document.querySelector('#section' + (index + 1));
             const label = document.querySelector('label[for=checkbox' + (index + 1) + ']');
-
-        //     if(baseUrls.length > 0){
-        //     label.style.display = "#2ce60b";
-        //     checkbox.checked = true;
-        // }
             
             if (checkbox.checked) {
                 section.style.display = 'block';
@@ -131,6 +151,9 @@
             }
         });
     });
+
+
+
     </script>
 </body>
 </html>

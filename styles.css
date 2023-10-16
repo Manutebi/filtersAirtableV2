@@ -61,7 +61,7 @@ header{
 
 .container-grid{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr ;
 }
 
 .up{
@@ -182,9 +182,14 @@ header{
     font-weight: bold;
 }
 
-/* .title{
-    grid-column: 2;
-} */
+.title{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .7rem;
+    /* margin-top: .7rem; */
+    
+}
 
 .nav_menu {
     display: grid;
@@ -455,17 +460,36 @@ svg {
 } */
 
 button {
-    margin: 2px;
-    background-color: white;
+    padding: .5rem;
+    background: #efefef;;
+    border: none;
+    border-radius: .5rem;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
     text-align: center;
+    outline: none;
     cursor: pointer;
-    border-radius: 100%;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 5px;
-    border: solid 1px white;
-    font-weight: bold;
+    transition: .2s ease-in-out;
+    box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+                -6px -6px 10px rgba(255, 255, 255, .5),
+                6px 6px 8px rgba(255, 255, 255, .075),
+                6px 6px 10px rgba(0, 0, 0, .15);
 }
+button:hover {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+                -2px -2px 4px rgba(255, 255, 255, .4),
+                2px 2px 2px rgba(255, 255, 255, .05),
+                2px 2px 4px rgba(0, 0, 0, .1);
+}
+button:active {
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+                inset -2px -2px 4px rgba(255, 255, 255, .5),
+                inset 2px 2px 2px rgba(255, 255, 255, .075),
+                inset 2px 2px 4px rgba(0, 0, 0, .15);
+}
+
 
 .logo:hover #mostrar {
     transform: scale(1.1);
@@ -492,12 +516,11 @@ button {
     display: none;
 }
 
-button:hover:not(:disabled) {
-    background-color: rgb(255, 166, 0);
-    transition: 1s;
-    color: white;
-    cursor: pointer;
+button i{
+    margin-left: .2rem;
 }
+
+
 
 button:disabled {
     cursor: default;
