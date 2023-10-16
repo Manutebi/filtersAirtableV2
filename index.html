@@ -23,9 +23,9 @@
                 </button>
             <div class="showAll">
                 <button class="show">
-
+                    <i class="fa-regular fa-eye fa-xl"></i>
+                    <i class="fa-regular fa-eye-slash fa-xl"></i>
                 </button>
-
             </div>
 
             </div>
@@ -40,7 +40,7 @@
     <div class="container-grid">    
     </div>
 
-    <script>
+<script>
         const urlParams = new URLSearchParams(window.location.search);
         const baseUrls = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
             .map(letter => {
@@ -145,23 +145,85 @@ baseUrls.forEach((data, index) => {
     }
 });
 
+    const showAllButton = document.querySelector('.show');
+    const sections = Array.from(containerGrid.querySelectorAll('section'));
+    const checkboxes = Array.from(checkboxContainer.querySelectorAll('input'));
 
-        checkboxContainer.addEventListener('change', function() {
-        const checkboxes = Array.from(checkboxContainer.querySelectorAll('input'));
-        
-        checkboxes.forEach((checkbox, index) => {
-            const section = document.querySelector('#section' + (index + 1));
-            const label = document.querySelector('label[for=checkbox' + (index + 1) + ']');
-            
-            if (checkbox.checked) {
-                section.style.display = 'block';
-                label.style.color = '#2ce60b';
-            } else {
-                section.style.display = 'none';
-                label.style.color = 'red';
-            }
-        });
+    showAllButton.addEventListener('click', function () {
+    const allChecked = checkboxes.every(checkbox => checkbox.checked);
+    
+    sections.forEach((section, index) => {
+        if (allChecked) {
+        section.style.display = 'none';
+        checkboxes[index].checked = false;
+        } else {
+        section.style.display = 'block';
+        checkboxes[index].checked = true;
+        }
     });
+
+    toggleShowAllButtonIcon(allChecked);
+    });
+
+    function toggleShowAllButtonIcon(allChecked) {
+    showAllButton.innerHTML = allChecked
+        ? '<i class="fa-regular fa-eye fa-xl"></i>'
+        : '<i class="fa-regular fa-eye-slash fa-xl"></i>';
+    }
+
+
+
+
+
+    function updateCheckboxes() {
+    const sections = Array.from(containerGrid.querySelectorAll('section'));
+    sections.forEach((section, index) => {
+        const checkbox = document.querySelector('#checkbox' + (index + 1));
+        if (section.style.display === 'block') {
+        checkbox.checked = true;
+        } else {
+        checkbox.checked = false;
+        }
+    });
+    }
+
+    checkboxContainer.addEventListener('change', function () {
+    const checkboxes = Array.from(checkboxContainer.querySelectorAll('input'));
+
+    checkboxes.forEach((checkbox, index) => {
+        const section = document.querySelector('#section' + (index + 1));
+        const label = document.querySelector('label[for=checkbox' + (index + 1) + ']');
+
+        if (checkbox.checked) {
+        section.style.display = 'block';
+        label.style.color = '#2ce60b';
+        } else {
+        section.style.display = 'none';
+        label.style.color = 'red';
+        }
+    });
+    });
+
+    // Ocultar las tablas al inicio
+    baseUrls.forEach((data, index) => {
+    if (data.baseUrl) {
+        const section = document.querySelector('#section' + (index + 1));
+        section.style.display = 'none';
+    }
+    });
+
+// Actualizar el estado de las casillas de verificación al cargar la página
+updateCheckboxes();
+
+
+    // Ocultar las tablas al inicio
+    baseUrls.forEach((data, index) => {
+    if (data.baseUrl) {
+        const section = document.querySelector('#section' + (index + 1));
+        section.style.display = 'none';
+    }
+    });
+    ;
 
     let isNormal = true;
     let button = document.querySelector('.grid');
