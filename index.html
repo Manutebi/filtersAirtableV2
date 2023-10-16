@@ -15,10 +15,22 @@
     <nav class="nav-main">
         <div class="container-header">
             <div class="checkbox-container">
-                
+            </div>
+            <div class="gridButton">
+                <button class="grid"> 
+                    <i class="fa-solid fa-table-cells-large fa-xl"></i>
+                    <i class="fa-solid fa-grip-lines fa-xl" style="display: none;"></i>
+                </button>
+            <div class="showAll">
+                <button class="show">
+
+                </button>
+
+            </div>
+
             </div>
             <div class="loguito">
-                <img id="logoImage" src="/img/Benergy logo bueno.png" alt="">
+                <img id="logoImage" src="img/benergy.png" alt="">
                 <div class="logo">
                     <!-- <div id="down" class="down"><i class="fa-solid fa-circle-down fa-2xl"></i></div> -->
                 </div>
@@ -30,31 +42,31 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-const baseUrls = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
-    .map(letter => {
-        const baseUrl = urlParams.get('baseUrl' + letter);
-        const titulo = urlParams.get('titulo' + letter);
-        return { baseUrl, titulo };
-    });
+        const baseUrls = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+            .map(letter => {
+                const baseUrl = urlParams.get('baseUrl' + letter);
+                const titulo = urlParams.get('titulo' + letter);
+                return { baseUrl, titulo };
+            });
 
-const checkboxContainer = document.querySelector('.checkbox-container');
-const containerGrid = document.querySelector('.container-grid');
+        const checkboxContainer = document.querySelector('.checkbox-container');
+        const containerGrid = document.querySelector('.container-grid');
 
-baseUrls.forEach((data, index) => {
-    if (data.baseUrl) {
-        const checkbox = document.createElement('input');
-        checkbox.type = "checkbox";
-        checkbox.id = "checkbox" + (index + 1);
-        checkbox.checked = true;
-        
-        const label = document.createElement('label');
-        label.htmlFor = "checkbox" + (index + 1);
-        label.textContent = data.titulo || `iframe${index + 1}`;
-        
-        checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(label);
-    }
-});
+        baseUrls.forEach((data, index) => {
+            if (data.baseUrl) {
+                const checkbox = document.createElement('input');
+                checkbox.type = "checkbox";
+                checkbox.id = "checkbox" + (index + 1);
+                checkbox.checked = true;
+                
+                const label = document.createElement('label');
+                label.htmlFor = "checkbox" + (index + 1);
+                label.textContent = data.titulo || `iframe${index + 1}`;
+                
+                checkboxContainer.appendChild(checkbox);
+                checkboxContainer.appendChild(label);
+            }
+        });
 
 baseUrls.forEach((data, index) => {
     if (data.baseUrl) {
@@ -83,15 +95,14 @@ baseUrls.forEach((data, index) => {
 
         // Crear botón de recarga
         const reloadButton = document.createElement('button');
+        reloadButton.className = 'myButton'; 
         reloadButton.textContent = 'Recargar';
         reloadButton.addEventListener('click', function() {
             iframe.src = data.baseUrl;
         });
 
         // Agregar botón de recarga al lado del título
-        divTitle.appendChild(reloadButton);
-
-
+        divTitle.appendChild(reloadButton);   
 
         // Crear el icono y asignarle una clase de Font Awesome
         const icon = document.createElement('i');
@@ -150,6 +161,39 @@ baseUrls.forEach((data, index) => {
                 label.style.color = 'red';
             }
         });
+    });
+
+    let isNormal = true;
+    let button = document.querySelector('.grid');
+    let icon1 = button.children[0];
+    let icon2 = button.children[1];
+
+    button.addEventListener('click', function() {
+        if (isNormal) {
+            document.querySelector('.container-grid').style.gridTemplateColumns = '1fr 1fr';
+            icon1.style.display = 'none';
+            icon2.style.display = 'block';
+            isNormal = false;
+        } else {
+            document.querySelector('.container-grid').style.gridTemplateColumns = '1fr';
+            icon1.style.display = 'block';
+            icon2.style.display = 'none';
+            isNormal = true;
+        }
+    });
+
+    button.addEventListener('mouseover', function() {
+        if (isNormal) {
+            icon1.style.display = 'none';
+            icon2.style.display = 'block';
+        }
+    });
+
+    button.addEventListener('mouseout', function() {
+        if (isNormal) {
+            icon1.style.display = 'block';
+            icon2.style.display = 'none';
+        }
     });
 
 

@@ -64,6 +64,54 @@ header{
     grid-template-columns: 1fr ;
 }
 
+.gridButton{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    margin-right: 12rem;
+    margin-top: 5rem;
+    
+}
+
+
+.grid{
+    padding: .5rem;
+    background: #efefef;;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+                -6px -6px 10px rgba(255, 255, 255, .5),
+                6px 6px 8px rgba(255, 255, 255, .075),
+                6px 6px 10px rgba(0, 0, 0, .15);}
+
+
+.grid:hover {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+                -2px -2px 4px rgba(255, 255, 255, .4),
+                2px 2px 2px rgba(255, 255, 255, .05),
+                2px 2px 4px rgba(0, 0, 0, .1);
+}
+.grid:active {
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+                inset -2px -2px 4px rgba(255, 255, 255, .5),
+                inset 2px 2px 2px rgba(255, 255, 255, .075),
+                inset 2px 2px 4px rgba(0, 0, 0, .15);
+}
+
+
+
 .up{
     transform: scale(1.2);
     position: fixed;
@@ -186,7 +234,7 @@ header{
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: .7rem;
+    margin-top: 2rem;
     /* margin-top: .7rem; */
     
 }
@@ -204,8 +252,6 @@ header{
     justify-content: end;
     align-items: center;
     transition: transform 0.2s ease-in-out;
-
-
 }
 
 img:hover {
@@ -459,7 +505,43 @@ svg {
     margin-right: 200px;
 } */
 
-button {
+.myButton1 {
+    padding: .5rem;
+    background: #efefef;;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+                -6px -6px 10px rgba(255, 255, 255, .5),
+                6px 6px 8px rgba(255, 255, 255, .075),
+                6px 6px 10px rgba(0, 0, 0, .15);
+}
+.myButton1:hover {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+                -2px -2px 4px rgba(255, 255, 255, .4),
+                2px 2px 2px rgba(255, 255, 255, .05),
+                2px 2px 4px rgba(0, 0, 0, .1);
+}
+.myButton1:active {
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+                inset -2px -2px 4px rgba(255, 255, 255, .5),
+                inset 2px 2px 2px rgba(255, 255, 255, .075),
+                inset 2px 2px 4px rgba(0, 0, 0, .15);
+}
+
+
+
+
+.myButton {
     padding: .5rem;
     background: #efefef;;
     border: none;
@@ -477,13 +559,13 @@ button {
                 6px 6px 8px rgba(255, 255, 255, .075),
                 6px 6px 10px rgba(0, 0, 0, .15);
 }
-button:hover {
+.myButton:hover {
     box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
                 -2px -2px 4px rgba(255, 255, 255, .4),
                 2px 2px 2px rgba(255, 255, 255, .05),
                 2px 2px 4px rgba(0, 0, 0, .1);
 }
-button:active {
+.myButton:active {
     box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
                 inset -2px -2px 4px rgba(255, 255, 255, .5),
                 inset 2px 2px 2px rgba(255, 255, 255, .075),
@@ -516,7 +598,7 @@ button:active {
     display: none;
 }
 
-button i{
+.myButton i{
     margin-left: .2rem;
 }
 
