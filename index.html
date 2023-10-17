@@ -26,7 +26,12 @@
                     <i class="fa-regular fa-eye fa-xl"></i>
                 </button>
             </div>
-
+            <div class="refreashAll">
+                <button type="button" class="refreash">Todo
+                    <i class="fa-solid fa-arrows-rotate fa-xl"></i>
+                    <span class="tooltiptext"></span>
+                </button>
+            </div>
             </div>
             <div class="loguito">
                 <img id="logoImage" src="img/benergy.png" alt="">
@@ -98,6 +103,7 @@ baseUrls.forEach((data, index) => {
         reloadButton.textContent = 'Recargar';
         reloadButton.addEventListener('click', function() {
             iframe.src = data.baseUrl;
+            
         });
 
         // Agregar botón de recarga al lado del título
@@ -114,6 +120,10 @@ baseUrls.forEach((data, index) => {
             iframe.src = data.baseUrl;
         });
 
+        const refreash = document.querySelector('.refreash');
+        refreash.addEventListener('click', function() {
+            iframe.src = data.baseUrl;
+        });
         
         nav.appendChild(divTitle);
         header.appendChild(nav);
@@ -153,13 +163,15 @@ baseUrls.forEach((data, index) => {
     
     sections.forEach((section, index) => {
         if (allChecked) {
-        section.style.display = 'none';
+        section.style.display = 'none'; 
         checkboxes[index].checked = false;
         } else {
         section.style.display = 'block';
         checkboxes[index].checked = true;
         }
     });
+
+    
 
     toggleShowAllButtonIcon(allChecked);
     });
@@ -203,26 +215,17 @@ baseUrls.forEach((data, index) => {
     });
     });
 
-    // Ocultar las tablas al inicio
-    baseUrls.forEach((data, index) => {
-    if (data.baseUrl) {
-        const section = document.querySelector('#section' + (index + 1));
-        section.style.display = 'none';
-    }
-    });
+    // // Ocultar las tablas al inicio
+    // baseUrls.forEach((data, index) => {
+    // if (data.baseUrl) {
+    //     const section = document.querySelector('#section' + (index + 1));
+    //     section.style.display = 'none';
+    // }
+    // });
 
 // Actualizar el estado de las casillas de verificación al cargar la página
 updateCheckboxes();
 
-
-    // Ocultar las tablas al inicio
-    baseUrls.forEach((data, index) => {
-    if (data.baseUrl) {
-        const section = document.querySelector('#section' + (index + 1));
-        section.style.display = 'none';
-    }
-    });
-    ;
 
     let isNormal = true;
     let button = document.querySelector('.grid');
@@ -256,7 +259,6 @@ updateCheckboxes();
             icon2.style.display = 'none';
         }
     });
-
 
 
     </script>
